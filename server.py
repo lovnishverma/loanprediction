@@ -23,7 +23,7 @@ def page():
   x=loan[:,1:6]
   y=loan[:,-1]
   
-  model=SVC()
+  model=LogisticRegression()
   model.fit(x,y)
   
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
