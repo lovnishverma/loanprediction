@@ -21,12 +21,13 @@ def page():
   data=pd.read_csv(url, header=None)
   loan=data.values
   x=loan[:,1:6]
-  y=loan[:,-1]
+  y=loan[:,6]
   
-  model=LogisticRegression()
+  model=LinearRegression()
   model.fit(x,y)
+  result=arr[0]
   
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
-  return render_template("index.html",result=arr[0])
+  return render_template("index.html",result=arr[5])
 if __name__ == '__main__':
   app.run()
