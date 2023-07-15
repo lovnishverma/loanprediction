@@ -10,20 +10,23 @@ def loan():
 
 @app.route("/loan",methods=["POST"])
 def page():
-  temp_max=eval(request.form.get("temp_max"))
-  temp_min=eval(request.form.get("temp_min"))
-  wind=eval(request.form.get("wind"))
+  Gender=eval(request.form.get("Gender"))
+  Married=eval(request.form.get("Married"))
+  Educated=eval(request.form.get("Educated"))
+  Self-Employed=eval(request.form.get("Self-Employed"))
+  Credit_History=eval(request.form.get("Credit_History"))
+  Property_IN=eval(request.form.get("Property_IN"))
   
-  url="weatherd.csv"
+  url="Loan.csv"
   data=pd.read_csv(url, header=None)
-  weather=data.values
-  x=weather[:,1:4]
-  y=weather[:,-1]
+  loan=data.values
+  x=loan[:,1:6]
+  y=loan[:,-1]
   
   model=SVC()
   model.fit(x,y)
   
-  arr=model.predict([[temp_max,temp_min,wind]])
+  arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
   return render_template("index.html",result=arr[0])
 if __name__ == '__main__':
   app.run()
