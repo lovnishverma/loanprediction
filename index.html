@@ -3,85 +3,304 @@
     <title></title>
   </head>
   <style>
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
+            ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+              background-color: #333;
+            }
+
+            li {
+              float: left;
+            }
+
+            li a {
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+            }
+
+            li a:hover {
+              background-color: #111;
+            }
+            #scroll-container {
+          border: 3px solid whitek;
+          border-radius: 5px;
           overflow: hidden;
-          background-color: #333;
         }
 
-        li {
-          float: left;
+        #scroll-text {
+          /* animation properties */
+          -moz-transform: translateX(100%);
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+
+          -moz-animation: my-animation 15s linear infinite;
+          -webkit-animation: my-animation 15s linear infinite;
+          animation: my-animation 15s linear infinite;
         }
 
-        li a {
-          display: block;
-          color: white;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
+        /* for Firefox */
+        @-moz-keyframes my-animation {
+          from { -moz-transform: translateX(100%); }
+          to { -moz-transform: translateX(-100%); }
         }
 
-        li a:hover {
-          background-color: #111;
+        /* for Chrome */
+        @-webkit-keyframes my-animation {
+          from { -webkit-transform: translateX(100%); }
+          to { -webkit-transform: translateX(-100%); }
         }
-        #scroll-container {
-      border: 3px solid black;
-      border-radius: 5px;
-      overflow: hidden;
+
+        @keyframes my-animation {
+          from {
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+          }
+          to {
+            -moz-transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+          }
+
+
+            body {
+              font-family: "Times New Roman", Times, serif;
+              font-size: 26px;
+            }
+
+          table, th, td {
+            border: 2px solid black;
+            text-align: center;
+          }
+          .center {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 230px ;
+      margin-bottom: auto;
     }
 
-    #scroll-text {
-      /* animation properties */
-      -moz-transform: translateX(100%);
-      -webkit-transform: translateX(100%);
-      transform: translateX(100%);
+          body{
+            background-image:url("https://cdn.glitch.global/b419cb09-5c0d-434e-ae1e-99a299ab2ef1/giphy.gif?v=1689429099307");
+            backdrop-filter: blur(3px);
+            background: rgba(0, 0, 0,);
+            font-family: "Times New Roman", Times, serif;
+            background-size= 100px 110px;
+          }
 
-      -moz-animation: my-animation 15s linear infinite;
-      -webkit-animation: my-animation 15s linear infinite;
-      animation: my-animation 15s linear infinite;
-    }
-
-    /* for Firefox */
-    @-moz-keyframes my-animation {
-      from { -moz-transform: translateX(100%); }
-      to { -moz-transform: translateX(-100%); }
-    }
-
-    /* for Chrome */
-    @-webkit-keyframes my-animation {
-      from { -webkit-transform: translateX(100%); }
-      to { -webkit-transform: translateX(-100%); }
-    }
-
-    @keyframes my-animation {
-      from {
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
-      }
-      to {
-        -moz-transform: translateX(-100%);
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%);
-      }
-
-
-        body {
-          font-family: "Times New Roman", Times, serif;
-          font-size: 26px;
-        }
-      
+          .cap{
+            font-size="100px"
+          }
   </style>
 
-  <body style="background-color: 464542; color: azure">
+  <body>
     <div id="scroll-container">
-      <div id="scroll-text"> PROJECT BASED ON PYTHON WITH MACHINE LEARNING !!</div>
+      <div id="scroll-text">
+        PROJECT BASED ON PYTHON WITH MACHINE LEARNING !!
+      </div>
     </div>
-    
+
     <font face="Times new roman" size="25">
-    <center style="font-size: 30px"><h1> LOAN PREDICTION </h1></center>
+      <center style="font-size: 30px"><h1>LOAN PREDICTION</h1></center>
     </font>
+
+    <table style="width: 40%" class="center" id="Sadhv">
+      <tr>
+        <th>GENDER</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="Male"
+              id="gender0"
+            />
+            <label class="form-check-label" for="male"> MALE </label>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="Male"
+              id="gender1"
+              checked
+            />
+            <label class="form-check-label" for="female"> FEMALE </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>MARRIED STATUS</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="married"
+              id="yes0"
+            />
+            <label class="form-check-label" for="married"> YES </label>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="married"
+              id="yes1"
+              checked
+            />
+            <label class="form-check-label" for="unmarried"> NO </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>EDUCATED</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="educated"
+              id="flexRadioDefault5"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              YES
+            </label>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="educated"
+              id="flexRadioDefault6"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2"> NO </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>SELF-EMPLOYED</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="employed"
+              id="flexRadioDefault7"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              YES
+            </label>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="employed"
+              id="flexRadioDefault8"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2"> NO </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>CREDIT HISTORY</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="hist"
+              id="flexRadioDefault9"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              YES
+            </label>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="hist"
+              id="flexRadioDefault10"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2"> NO </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>PROPERTY IN :</th>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="area"
+              id="flexRadioDefault11"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              RURAL
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="area"
+              id="flexRadioDefault12"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              SEMI-URBAN
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="area"
+              id="flexRadioDefault13"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              URBAN
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" form="Sadhv" value="Submit">Submit</button>
+        </td>
+        <th>RESULT</th>
+        <td colspan="2"></td>
+      </tr>
+    </table>
   </body>
 </html>
