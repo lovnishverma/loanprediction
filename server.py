@@ -27,6 +27,6 @@ def page():
   model.fit(x,y)
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
   result=arr[0]
-  return render_template("index.html",data =str(arr[0]))
+  return render_template("index.html",data = str(result))
 if __name__ == '__main__':
   app.run()
