@@ -25,9 +25,8 @@ def page():
   
   model=LinearRegression()
   model.fit(x,y)
-  result=arr[0]
-  
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
-  return render_template("index.html",result=arr[5])
+  result=arr[0]
+  return render_template("index.html",data =str(arr[0]))
 if __name__ == '__main__':
   app.run()
