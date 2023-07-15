@@ -3,45 +3,81 @@
     <title></title>
   </head>
   <style>
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #111;
+        }
+        #scroll-container {
+      border: 3px solid black;
+      border-radius: 5px;
       overflow: hidden;
-      background-color: #333;
     }
 
-    li {
-      float: left;
+    #scroll-text {
+      /* animation properties */
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+
+      -moz-animation: my-animation 15s linear infinite;
+      -webkit-animation: my-animation 15s linear infinite;
+      animation: my-animation 15s linear infinite;
     }
 
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
+    /* for Firefox */
+    @-moz-keyframes my-animation {
+      from { -moz-transform: translateX(100%); }
+      to { -moz-transform: translateX(-100%); }
     }
 
-    li a:hover {
-      background-color: #111;
+    /* for Chrome */
+    @-webkit-keyframes my-animation {
+      from { -webkit-transform: translateX(100%); }
+      to { -webkit-transform: translateX(-100%); }
     }
-    
-    body{
-      font-family: "Times New Roman", Times, serif;
-    }
-    
+
+    @keyframes my-animation {
+      from {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+      }
+      to {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+      }
+
+
+        body {
+          font-family: "Times New Roman", Times, serif;
+        }
   </style>
 
-  <body style="background-color:464542; color: azure">
-    <ul>
-      <li><a class="active" href="#home"> PYTHON PROJECT | PYTHON PROJECT | PYTHON PROJECT | PYTHON PROJECT | PYTHON PROJECT  | PYTHON PROJECT | PYTHON PROJECT | PYTHON PROJECT | PYTHON PROJECT </a></li>
-    </ul>
-    
-    <center><h1>
-      PROJECT
-      </h1> </center>
-    
-    
+  <body style="background-color: 464542; color: azure">
+    <div id="scroll-container">
+      <div id="scroll-text"> PROJECT BASED ON PYTHON WITH MACHINE LEARNING !! </div>
+    </div>
+
+    <center><h1> PROJECT </h1></center>
   </body>
 </html>
