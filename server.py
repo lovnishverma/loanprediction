@@ -5,8 +5,24 @@ from sklearn.svm import LinearRegression
 app=Flask(__name__)
 
 @app.route('/')
-def loan():
+def first():
   return render_templates("index.html")
+
+
+@app.route('/l') # open the form for loan prediction
+def hprice(): 
+  return  render_template('loan.html') 
+
+
+@app.route('/d') # open the form for diamond price prediction
+def hprice(): 
+  return  render_template('diamond.html') 
+
+
+@app.route('/f') # open the form for diamond price prediction
+def hprice(): 
+  return  render_template('iriss.html') 
+
 
 @app.route("/loan",methods=["POST"])
 def page():
@@ -28,5 +44,31 @@ def page():
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
   result=arr[0]
   return render_template("loan.html",data = str(result))
+
+
+@app.route('/dp', methods = ['POST']) 
+def diamondpricepredict(): 
+  carat = eval ( request.form.get ( "carat") )
+  cut   = eval ( request.form.get ( "cut") )
+  clarity = eval ( request.form.get ( "clarity") )
+  color   = eval ( request.form.get ( "color") ) 
+  x  = eval ( request.form.get ( "x") )
+  y  = eval ( request.form.get ( "y") )
+  z  = eval ( request.form.get ( "z") )
+  # predict and save the output in result variable
+  url   = "cdiamond.csv"
+  dfspf = pd.read_csv(url)
+  df1   = dfspf.values
+  X = df1[:,[ 1,2,3,4,6,7,8]] 
+  Y = df1[:,5]   
+  model = LinearRegression ()
+  model.fit( X , Y )
+  arr   = model.predict([[ carat,cut,color,clarity,x,y,z]] )
+  #################
+  result = arr[0] 
+  return " Diamond Price : "+str(result) 
+# render_template("result.html", data = str(result) + " %")
+
+
 if __name__ == '__main__':
   app.run()
