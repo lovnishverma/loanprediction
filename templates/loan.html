@@ -27,7 +27,8 @@
             font-weight: bold;
             margin-bottom: 5px;
         }
-        select {
+        select,
+        input[type="number"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
@@ -56,53 +57,76 @@
             <div class="form-group">
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="married">Married:</label>
                 <select id="married" name="married" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dependents">Dependents:</label>
+                <select id="dependents" name="dependents" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3+">3+</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="education">Education:</label>
                 <select id="education" name="education" required>
-                    <option value="0">Not Graduate</option>
-                    <option value="1">Graduate</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Not Graduate">Not Graduate</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="self_employed">Self Employed:</label>
                 <select id="self_employed" name="self_employed" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="applicant_income">Applicant Income:</label>
+                <input type="number" id="applicant_income" name="applicant_income" required>
+            </div>
+            <div class="form-group">
+                <label for="coapplicant_income">Coapplicant Income:</label>
+                <input type="number" id="coapplicant_income" name="coapplicant_income" required>
+            </div>
+            <div class="form-group">
+                <label for="loan_amount">Loan Amount:</label>
+                <input type="text" id="loan_amount" name="loan_amount" required>
+            </div>
+            <div class="form-group">
+                <label for="loan_amount_term">Loan Amount Term:</label>
+                <input type="text" id="loan_amount_term" name="loan_amount_term" required>
             </div>
             <div class="form-group">
                 <label for="credit_history">Credit History:</label>
                 <select id="credit_history" name="credit_history" required>
-                    <option value="0">No</option>
                     <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="property_area">Property Area:</label>
                 <select id="property_area" name="property_area" required>
-                    <option value="0">Rural</option>
-                    <option value="1">Semiurban</option>
-                    <option value="2">Urban</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Semiurban">Semiurban</option>
                 </select>
             </div>
             <button type="submit">Predict</button>
         </form>
-        <div class="prediction">
-            {% if prediction is defined %}
-                Prediction: {{ prediction }}
-            {% endif %}
-        </div>
+        {% if prediction is not none %}
+        <p class="prediction">Prediction: {{ prediction }}</p>
+        {% endif %}
     </div>
 </body>
 </html>
