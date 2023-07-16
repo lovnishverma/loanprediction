@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
 
 app = Flask(__name__)
 
@@ -17,9 +19,9 @@ def predict():
     self_employed = request.form.get('self_employed')
     applicant_income = int(request.form.get('applicant_income'))
     coapplicant_income = int(request.form.get('coapplicant_income'))
-    loan_amount = request.form.get('loan_amount')
-    loan_amount_term = request.form.get('loan_amount_term')
-    credit_history = request.form.get('credit_history')
+    loan_amount = int(request.form.get('loan_amount'))
+    loan_amount_term = int(request.form.get('loan_amount_term'))
+    credit_history = int(request.form.get('credit_history'))
     property_area = request.form.get('property_area')
 
     # Load the loan dataset
@@ -30,16 +32,27 @@ def predict():
             'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area']]
     y = df['Loan_Status']
 
-    # Create a logistic regression model
-    model = LogisticRegression()
+    # Perform one-hot encoding on categorical features
+    enc = OneHotEncoder(handle_unknown='ignore')
+    X_encoded = enc.fit_transform(X)
 
-    # Train the model
-    model.fit(X, y)
+    # Handle missing values
+    imputer = SimpleImputer(strategy='mean')
+    X_encoded_filled = imputer.fit_transform(X_encoded)
+
+    # Create a random forest classifier model
+    model = RandomForestClassifier()
+
+    # Train the model on the entire dataset
+    model.fit(X_encoded_filled, y)
+
+    # Prepare the input data for prediction
+    input_data = [[gender, married, dependents, education, self_employed, applicant_income,
+                   coapplicant_income, loan_amount, loan_amount_term, credit_history, property_area]]
+    input_encoded = enc.transform(input_data)
 
     # Make prediction on new data
-    new_data = [[gender, married, dependents, education, self_employed, applicant_income,
-                 coapplicant_income, loan_amount, loan_amount_term, credit_history, property_area]]
-    prediction = model.predict(new_data)[0]
+    prediction = model.predict(input_encoded)[0]
 
     return render_template('loan.html', prediction=prediction)
 
