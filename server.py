@@ -9,7 +9,7 @@ def first():
   return render_templates("index.html")
 
 
-@app.route('/l') # open the form for loan prediction
+@app.route('/lp') # open the form for loan prediction
 def loan(): 
   return  render_template('loan.html') 
 
@@ -19,7 +19,7 @@ def diamond():
   return  render_template('diamond.html') 
 
 
-@app.route('/f') # open the form for flower prediction
+@app.route('/fp') # open the form for flower prediction
 def irisf(): 
   return  render_template('iriss.html') 
 
@@ -56,7 +56,7 @@ def diamondpricepredict():
   y  = eval ( request.form.get ( "y") )
   z  = eval ( request.form.get ( "z") )
   # predict and save the output in result variable
-  url   = "cdiamond.csv"
+  url   = "diamond.csv"
   dfspf = pd.read_csv(url)
   df1   = dfspf.values
   X = df1[:,[ 1,2,3,4,6,7,8]] 
