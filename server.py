@@ -1,12 +1,12 @@
 from flask import *
 import numpy as  np
 import pandas as pd
-from sklearn.svm import SVC
+from sklearn.svm import LinearRegression
 app=Flask(__name__)
 
 @app.route('/')
 def loan():
-  return render_template("index.html")
+  return render_templates("index.html")
 
 @app.route("/loan",methods=["POST"])
 def page():
@@ -27,6 +27,6 @@ def page():
   model.fit(x,y)
   arr=model.predict([[Gender,Married,Educated,Self-Employed,Credit_History,Property_IN]])
   result=arr[0]
-  return render_template("index.html",data = str(result))
+  return render_template("loan.html",data = str(result))
 if __name__ == '__main__':
   app.run()
