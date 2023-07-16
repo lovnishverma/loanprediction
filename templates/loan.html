@@ -2,44 +2,108 @@
 <html>
 <head>
     <title>Loan Prediction</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Loan Prediction</h1>
+        <h1>Loan Prediction</h1>
         <form action="/predict" method="POST">
             <div class="form-group">
-                <label for="gender">Gender:</label>
-                <input type="number" class="form-control" id="gender" name="gender" required>
+                <label for="Gender">Gender:</label>
+                <select id="Gender" name="Gender" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="married">Married:</label>
-                <input type="number" class="form-control" id="married" name="married" required>
+                <label for="Married">Married:</label>
+                <select id="Married" name="Married" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="education">Education:</label>
-                <input type="number" class="form-control" id="education" name="education" required>
+                <label for="Education">Education:</label>
+                <select id="Education" name="Education" required>
+                    <option value="0">Not Graduate</option>
+                    <option value="1">Graduate</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="self_employed">Self Employed:</label>
-                <input type="number" class="form-control" id="self_employed" name="self_employed" required>
+                <label for="Self_Employed">Self Employed:</label>
+                <select id="Self_Employed" name="Self_Employed" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="credit_history">Credit History:</label>
-                <input type="number" class="form-control" id="credit_history" name="credit_history" required>
+                <label for="Credit_History">Credit History:</label>
+                <select id="Credit_History" name="Credit_History" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="property_area">Property Area:</label>
-                <input type="number" class="form-control" id="property_area" name="property_area" required>
+                <label for="Property_Area">Property Area:</label>
+                <select id="Property_Area" name="Property_Area" required>
+                    <option value="0">Rural</option>
+                    <option value="1">Semiurban</option>
+                    <option value="2">Urban</option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary">Predict</button>
+            <button type="submit">Predict</button>
         </form>
-        {% if prediction is not none %}
-        <h2 class="text-center mt-4">Prediction: {{ prediction }}</h2>
-        {% endif %}
+        <div class="prediction">
+            {% if prediction is defined %}
+                Prediction: {{ prediction }}
+            {% endif %}
+        </div>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

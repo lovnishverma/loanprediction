@@ -1,4 +1,4 @@
-Gender	Married	Education	Self_Employed	Credit_History	Property_Area	Loan_Status
+Id Gender	Married	Education	Self_Employed	Credit_History	Property_Area	Loan_Status
 0	1	0	1	0	1	2	1
 1	1	1	1	0	1	0	0
 2	1	1	1	1	1	2	1
