@@ -10,10 +10,10 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    gender = int(request.form.get('Gender'))
-    married = int(request.form.get('Married'))
-    education = int(request.form.get('Education'))
-    self_employed = int(request.form.get('Self_employed'))
+    gender = int(request.form.get('gender'))
+    married = int(request.form.get('married'))
+    education = int(request.form.get('education'))
+    self_employed = int(request.form.get('self_employed'))
     credit_history = int(request.form.get('credit_history'))
     property_area = int(request.form.get('property_area'))
 
@@ -21,8 +21,8 @@ def predict():
     df = pd.read_csv('loan.csv')
 
     # Prepare the data
-    X = df[['Gender', 'Married', 'Education', 'Self_Employed', 'Credit_History', 'Property_Area']]
-    y = df['Loan_Status']
+    X = df[['gender', 'married', 'education', 'self_employed', 'credit_history', 'property_area']]
+    y = df['loan_status']
 
     # Create a logistic regression model
     model = LogisticRegression()
@@ -32,7 +32,7 @@ def predict():
 
     # Make prediction on new data
     new_data = [[gender, married, education, self_employed, credit_history, property_area]]
-    prediction = int(model.predict(new_data)[0])
+    prediction = model.predict(new_data)[0]
 
     return render_template('loan.html', prediction=prediction)
 
