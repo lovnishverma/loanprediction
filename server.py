@@ -4,23 +4,23 @@ import pandas as pd
 from sklearn.svm import LinearRegression
 app=Flask(__name__)
 
-@app.route('/')
+@app.route('/template')
 def first():
   return render_templates("index.html")
 
 
 @app.route('/l') # open the form for loan prediction
-def hprice(): 
+def loan(): 
   return  render_template('loan.html') 
 
 
-@app.route('/d') # open the form for diamond price prediction
-def hprice(): 
+@app.route('/dp') # open the form for diamond price prediction
+def diamond(): 
   return  render_template('diamond.html') 
 
 
-@app.route('/f') # open the form for diamond price prediction
-def hprice(): 
+@app.route('/f') # open the form for flower prediction
+def irisf(): 
   return  render_template('iriss.html') 
 
 
