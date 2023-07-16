@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Prediction</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Loan Prediction</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="number" class="form-control" id="gender" name="gender" required>
+            </div>
+            <div class="form-group">
+                <label for="married">Married:</label>
+                <input type="number" class="form-control" id="married" name="married" required>
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <input type="number" class="form-control" id="education" name="education" required>
+            </div>
+            <div class="form-group">
+                <label for="self_employed">Self Employed:</label>
+                <input type="number" class="form-control" id="self_employed" name="self_employed" required>
+            </div>
+            <div class="form-group">
+                <label for="credit_history">Credit History:</label>
+                <input type="number" class="form-control" id="credit_history" name="credit_history" required>
+            </div>
+            <div class="form-group">
+                <label for="property_area">Property Area:</label>
+                <input type="number" class="form-control" id="property_area" name="property_area" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction is not none %}
+        <h2 class="text-center mt-4">Prediction: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
