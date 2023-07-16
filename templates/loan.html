@@ -2,33 +2,118 @@
 <html>
 <head>
     <title>Loan Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 14px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>Loan Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="gender">Gender:</label>
-        <input type="number" name="gender" id="gender" required><br>
 
-        <label for="married">Married:</label>
-        <input type="number" name="married" id="married" required><br>
+    <form action="/predict" method="POST">
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+        </div>
 
-        <label for="education">Education:</label>
-        <input type="number" name="education" id="education" required><br>
+        <div class="form-group">
+            <label for="married">Married:</label>
+            <select class="form-control" id="married" name="married">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
 
-        <label for="self_employed">Self Employed:</label>
-        <input type="number" name="self_employed" id="self_employed" required><br>
+        <div class="form-group">
+            <label for="education">Education:</label>
+            <select class="form-control" id="education" name="education">
+                <option value="1">Graduate</option>
+                <option value="0">Not Graduate</option>
+            </select>
+        </div>
 
-        <label for="credit_history">Credit History:</label>
-        <input type="number" name="credit_history" id="credit_history" required><br>
+        <div class="form-group">
+            <label for="self_employed">Self Employed:</label>
+            <select class="form-control" id="self_employed" name="self_employed">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
 
-        <label for="property_area">Property Area:</label>
-        <input type="number" name="property_area" id="property_area" required><br>
+        <div class="form-group">
+            <label for="credit_history">Credit History:</label>
+            <select class="form-control" id="credit_history" name="credit_history">
+                <option value="1">Good</option>
+                <option value="0">Not Good</option>
+            </select>
+        </div>
 
-        <input type="submit" value="Predict">
+        <div class="form-group">
+            <label for="property_area">Property Area:</label>
+            <select class="form-control" id="property_area" name="property_area">
+                <option value="2">Urban</option>
+                <option value="1">Semiurban</option>
+                <option value="0">Rural</option>
+            </select>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Submit">
     </form>
 
     {% if prediction is defined %}
-        <h2>Prediction: {{ prediction }}</h2>
+    <h2>Loan Status Prediction:</h2>
+    {% if prediction == 1 %}
+    <p>Approved</p>
+    {% else %}
+    <p>Rejected</p>
     {% endif %}
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

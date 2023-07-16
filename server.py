@@ -1,11 +1,14 @@
+from flask import Flask, render_template, request
 import pandas as pd
-import pickle
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+@app.route('/')
+def home():
+    return render_template('loan.html')
+
+@app.route('/predict', methods=['POST'])
 def predict():
     # Get the input values from the form
     gender = int(request.form.get('gender'))
